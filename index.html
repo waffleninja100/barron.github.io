@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (previous head content) ... -->
+</head>
+<body>
+    <!-- ... (previous body content) ... -->
+    <script src="scripts.js"></script>
+    <script>
+        // ... (previous script content) ...
+
+        async function checkTopScore() {
+            if (topScorers.length < 10 || score > topScorers[topScorers.length - 1].score) {
+                const name = prompt("You've made the top 10! Enter your name:");
+                if (name) {
+                    topScorers.push({ name, score });
+                    topScorers.sort((a, b) => b.score - a.score);
+                    topScorers = topScorers.slice(0, 10);
+                    totalScore += score;
+                    await saveStoredData();
+                    displayTopScorers();
+                }
+            }
+            resetGame();
+        }
+
+        // ... (rest of the script content) ...
+    </script>
+</body>
+</html>
